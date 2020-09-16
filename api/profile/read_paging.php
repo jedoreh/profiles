@@ -27,9 +27,9 @@ $num = $stmt->rowCount();
 if($num>0){
   
     // products array
-    $products_arr=array();
-    $products_arr["records"]=array();
-    $products_arr["paging"]=array();
+    $profile_arr=array();
+    $profile_arr["records"]=array();
+    $profile_arr["paging"]=array();
   
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -40,30 +40,31 @@ if($num>0){
         // just $name only
         extract($row);
   
-        $product_item=array(
+        $profile_item=array(
             "id" => $id,
-            "name" => $name,
-            "description" => html_entity_decode($description),
-            "price" => $price,
-            "category_id" => $category_id,
-            "category_name" => $category_name
+                "firstname" => $firstname,
+                "lastname" => $lastname,
+                "email" => $firstname,
+                "gender" => $gender,
+                "profile_pic" => $profile_pic,
+                "date" => $date
         );
   
-        array_push($products_arr["records"], $product_item);
+        array_push($profile_arr["records"], $profile_item);
     }
   
   
     // include paging
-    $total_rows=$product->count();
-    $page_url="{$home_url}product/read_paging.php?";
+    $total_rows=$profile->count();
+    $page_url="{$home_url}profile/read_paging.php?";
     $paging=$utilities->getPaging($page, $total_rows, $records_per_page, $page_url);
-    $products_arr["paging"]=$paging;
+    $profile_arr["paging"]=$paging;
   
     // set response code - 200 OK
     http_response_code(200);
   
     // make it json format
-    echo json_encode($products_arr);
+    echo json_encode($profile_arr);
 }
   
 else{

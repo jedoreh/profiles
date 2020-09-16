@@ -14,13 +14,14 @@ $(document).ready(function(){
         var json_url=$(this).find('a').attr('data-page');
  
         // show list of products
-        showProducts(json_url);
+        showProfiles(json_url);
     });
  
  
 });
  
 function showProfilesFirstPage(){
+    console.log("test")
     var json_url="https://profiles.uniben.edu/api/profile/read_paging.php";
     showProfiles(json_url);
 }
