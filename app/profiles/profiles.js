@@ -19,7 +19,7 @@ function readProfilesTemplate(data, keywords){
  
         <!-- when clicked, it will load the create product form -->
         <div id='create-product' class='btn btn-primary pull-right m-b-15px create-profile-button'>
-            <span class='glyphicon glyphicon-plus'></span> Create Candidate
+            <span class='glyphicon glyphicon-plus'></span> Create Profile
         </div>
  
         <!-- start table -->

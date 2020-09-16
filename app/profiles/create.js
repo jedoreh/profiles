@@ -1,5 +1,6 @@
 $(document).ready(function(){
  
+    
     // show html form when 'create product' button was clicked
     $(document).on('click', '.create-profile-button', function(){
         // categories api call will be here
@@ -114,7 +115,7 @@ $(document).ready(function(){
             $("#page-content").html(create_profile_html);
             
             // chage page title
-            changePageTitle("Create Candidate");
+            changePageTitle("Create Profile");
         });
     //});
  
