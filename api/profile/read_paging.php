@@ -73,7 +73,7 @@ else{
   
     // tell the user products does not exist
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "No profiles found.")
     );
 }
 ?>
