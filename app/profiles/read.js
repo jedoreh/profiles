@@ -1,5 +1,5 @@
 $(document).ready(function(){
- 
+    console.log("test")
     // show list of product on first load
     showProfilesFirstPage();
  
@@ -21,22 +21,24 @@ $(document).ready(function(){
 });
  
 function showProfilesFirstPage(){
-    console.log("test")
+   
     var json_url="https://profiles.uniben.edu/api/profile/read_paging.php";
+    
     showProfiles(json_url);
 }
  
 // function to show list of products
 function showProfiles(json_url){
- 
+    console.log("data");
     // get list of products from the API
     $.getJSON(json_url, function(data){
- 
+        
         // html for listing products
+        
         readProfilesTemplate(data, "");
  
         // chage page title
-        changePageTitle("View Staff Profiles");
+        changePageTitle("View Staff Profiles1");
  
     });
 }

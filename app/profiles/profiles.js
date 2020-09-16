@@ -1,5 +1,7 @@
 // product list html
 function readProfilesTemplate(data, keywords){
+
+    console.log("data");
  
     var read_profiles_html=`
         <!-- search products form -->
