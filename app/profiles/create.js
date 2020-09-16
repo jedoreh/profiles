@@ -116,7 +116,7 @@ $(document).ready(function(){
             // chage page title
             changePageTitle("Create Candidate");
         });
-    });
+    //});
  
     // 'create product form' handle will be here
     // will run if create product form was submitted
