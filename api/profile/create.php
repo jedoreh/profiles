@@ -12,11 +12,13 @@
     
     // instantiate product object
     include_once '../objects/profile.php';
+    include_once '../objects/staff.php';
 
     $database = new Database();
     $db = $database->getConnection();
     
     $profile = new Profile($db);
+    $staff = new Staff($db);
 
     // get posted data
     $data = json_decode(file_get_contents("php://input"));
@@ -46,6 +48,58 @@
         $profile->office_address = $data->office_address;
         $profile->biography = $data->biography;
         $profile->profile_show = $data->profile_show;
+
+        $id = 0;
+        
+        
+        if(empty($data->username)){
+            $profile->username = $data->firstname . '.' . $data->lastname;
+            $staff->fullname = $data->firstname . ' ' . $data->lastname;
+            $staff->usersname = $profile->username;
+            $staff->email = $data->email;
+            $staff->password = 'unibenpassword123';
+           
+
+             //check if username already exixts
+             $con = mysqli_connect("localhost","root","Pa55w0rd@1","staffprofile");
+             $username = $profile->username;
+             $query = mysqli_query($con, "SELECT id FROM login WHERE usersname='$username'");
+             
+              
+             $row = mysqli_num_rows($query);
+             while($row = 0) {
+                 $i++;
+                 $username = $username . "_" . $i;
+                 $query = mysqli_query($con, "SELECT id FROM login WHERE usersname='$username'");
+             }
+             
+             $staff->usersname = $username;
+            $staff->create();
+
+            $query_id = mysqli_query($con, "SELECT id FROM login WHERE usersname='$username'");
+            $row_id = mysqli_fetch_array($query_id, 1);
+             $id = $row_id['id'];
+             $profile->username = $id;
+        }
+        else{
+
+            $profile->username = $data->username;
+
+             //check if username already exixts
+            $con = mysqli_connect("localhost","root","Pa55w0rd@1","staffprofile");
+            $username = $profile->username;
+            $query = mysqli_query($con, "SELECT id FROM login WHERE usersname='$username'");
+        
+            $row = mysqli_num_rows($query);
+            while($row = 0) {
+                $i++;
+                $username = $username . "_" . $i;
+                $query = mysqli_query($con, "SELECT id FROM login WHERE usersname='$username'");
+            }
+            $row_id = mysqli_fetch_array($query, 1);
+             $id = $row_id['id'];
+            $profile->username = $id;
+        }
 
         
         //$product->created = date('Y-m-d H:i:s');

@@ -29,10 +29,10 @@ function showProfilesFirstPage(){
  
 // function to show list of products
 function showProfiles(json_url){
-    console.log("data");
+   
     // get list of products from the API
     $.getJSON(json_url, function(data){
-        
+         
         // html for listing products
         
         readProfilesTemplate(data, "");

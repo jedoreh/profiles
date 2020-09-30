@@ -23,6 +23,7 @@ $(document).ready(function(){
             <div id='read-profiles' class='btn btn-primary pull-right m-b-15px read-profiles-button'>
                 <span class='glyphicon glyphicon-list'></span> View Profiles
             </div>
+            <div id='page-error'></div>
             <!-- 'create product' html form -->
             <form id='create-profile-form' action='#' method='post' border='0'>
                 <table class='table table-hover table-responsive table-bordered'>
@@ -96,13 +97,14 @@ $(document).ready(function(){
                     <!-- categories 'select' field 
                     <tr>
                         <td>Category</td>
-                        <td>` + categories_options_html + `</td>
+                        <td> + categories_options_html + </td>
                     </tr>-->
             
                     <!-- button to submit form -->
                     <tr>
                         <td></td>
                         <td>
+                            <input type='hidden' value='NO' name='profile_show'>
                             <button type='submit' class='btn btn-primary'>
                                 <span class='glyphicon glyphicon-plus'></span> Create Profile
                             </button>
@@ -138,6 +140,8 @@ $(document).ready(function(){
             error: function(xhr, resp, text) {
                 // show error to console
                 console.log(xhr, resp, text);
+                //console.log(form_data);
+                 $("#page-error").html("<p>" + text + "</p>");
             }
         });
         

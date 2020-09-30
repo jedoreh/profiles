@@ -45,6 +45,8 @@ if($num>0){
                 "firstname" => $firstname,
                 "lastname" => $lastname,
                 "email" => $firstname,
+                "designation" => $designation,
+                "department" => $department,
                 "gender" => $gender,
                 "profile_pic" => $profile_pic,
                 "date" => $date

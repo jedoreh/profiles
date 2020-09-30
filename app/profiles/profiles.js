@@ -1,7 +1,7 @@
 // product list html
 function readProfilesTemplate(data, keywords){
 
-    console.log("data");
+    console.log(data.records);
  
     var read_profiles_html=`
         <!-- search products form -->
@@ -19,10 +19,7 @@ function readProfilesTemplate(data, keywords){
         </div>
         </form>
  
-        <!-- when clicked, it will load the create product form -->
-        <div id='create-product' class='btn btn-primary pull-right m-b-15px create-profile-button'>
-            <span class='glyphicon glyphicon-plus'></span> Create Profile
-        </div>
+        
  
         <!-- start table -->
         <div class='row'>`;
@@ -30,16 +27,17 @@ function readProfilesTemplate(data, keywords){
  
     // loop through returned list of data
     $.each(data.records, function(key, val) {
- 
+        var image = "images/image_1.jpg";
         // creating new table row per record
-        read_profiles_html+=`<div class='col-md-4 ftco-animate'>
+        read_profiles_html+=`<div class='col-md-4'>
             <div class="blog-entry">
-              <a href='blog-single.html' class='block-20' style='background-image: url(`+`'images/image_1.jpg'`+`);'>
+              <a href='#'>
+                <img src='images/` + val.profile_pic + `' class='block-20' style='width:100%;' />
               </a>
               <div class='text p-4 d-block'>
                 <div class='meta mb-3'>
-                  <div><a href='#'>July 12, 2018</a></div>
-                  <div><a href='#'>Admin</a></div>
+                  <div>` + val.department + `</div>
+                  <div>` + val.designation + `</div>
                   <div><a href='#' class='meta-chat'><span class='icon-chat'></span> 3</a></div>
                 </div>
                 <h3 class='heading'><a href='#'>` + val.firstname + ` ` + val.lastname + `</a></h3>
