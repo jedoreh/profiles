@@ -24,7 +24,12 @@ function showProfilesFirstPage(){
    
     var json_url="https://profiles.uniben.edu/api/profile/read_paging.php";
     
-    showProfiles(json_url);
+    //showProfiles(json_url);
+
+    const fetchPromise1 = fetch(json_url);
+    fetchPromise1.then(response => {
+      console.log(response);
+    });
 }
  
 // function to show list of products
